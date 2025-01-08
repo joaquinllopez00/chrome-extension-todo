@@ -1,4 +1,6 @@
+import './popup.css';  // This should import your local styles
+import '../styles/tailwind.css';  // This imports Tailwind
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize popup functionality
     console.log('Popup script loaded');
 });

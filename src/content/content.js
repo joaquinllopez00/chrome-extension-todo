@@ -1,6 +1,8 @@
-console.log('Content script loaded');
-
-// Example of messaging to background script
-chrome.runtime.sendMessage({ type: 'contentScriptLoaded' }, response => {
-    console.log('Response from background:', response);
-});
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'SCAN_PAGE') {
+      // Example: Scan page for todos
+        console.log('SCAN_PAGE');
+    }
+    // Keep the message channel open for async responses
+    return true;
+  });
