@@ -3,23 +3,22 @@ import react from '@vitejs/plugin-react';
 import { crx } from '@crxjs/vite-plugin';
 import manifest from './manifest.json' with { type: 'json' };
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [react(), crx({ manifest })],
   build: {
     emptyOutDir: true,
     outDir: 'dist',
     rollupOptions: {
       input: {
-        popup: 'src/popup/index.html'
+        popup: 'src/popup/index.html',
       },
     },
   },
-//   server: {
-//     port: 5173,
-//     strictPort: true,
-//     hmr: {
-//       port: 5173
-//     }
-//   }
+  //   server: {
+  //     port: 5173,
+  //     strictPort: true,
+  //     hmr: {
+  //       port: 5173
+  //     }
+  //   }
 }));
-
