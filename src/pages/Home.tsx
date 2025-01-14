@@ -1,15 +1,20 @@
-import React from 'react';
+import ItemList from '../components/ItemList';
+import { getItems } from '../services/db/items';
+import { useAsyncFetch } from '../lib/useAsyncFetch.hook';
 
 function Home() {
+  const { data, loading, error } = useAsyncFetch(getItems);
+
   return (
     <div className='space-y-2'>
-      <h1 className='text-2xl font-bold text-gray-900 dark:text-white'>
-        Welcome to Your Extension
-      </h1>
-      <div className='bg-white dark:bg-gray-700 rounded-lg p-4 shadow'>
-        <p className='text-gray-600 dark:text-gray-300'>
-          This is your React-powered Chrome extension.
-        </p>
+      <div className='bg-gray-700 rounded-lg p-2 shadow'>
+        {loading ? (
+          <span className='progress progress-primary w-full' />
+        ) : data ? (
+          <ItemList items={data} />
+        ) : (
+          <p>No items found</p>
+        )}
       </div>
     </div>
   );
